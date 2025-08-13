@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long Id;
     @NotBlank(message = "O titulo é obrigatório")
     private String titulo;
     @NotBlank(message = "O autor é obrigatório")
@@ -46,12 +46,12 @@ public class Livro {
         this.autor = autor;
     }
 
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return Id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public String getTitulo() {
