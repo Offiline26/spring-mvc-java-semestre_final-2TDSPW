@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class LivroService {
-
     private final LivroRepository livroRepository;
 
     @Autowired
@@ -17,11 +16,12 @@ public class LivroService {
         this.livroRepository = livroRepository;
     }
 
-    public Livro createLivro(Livro livro){
+    // CRUD -> Create, Read, Update, Delete
+    public Livro createLivro(Livro livro) {
         return livroRepository.save(livro);
     }
 
-    public Livro readLivro(Long id){
+    public Livro readLivro(Long id) {
         return livroRepository.findById(id).orElse(null);
     }
 
@@ -29,10 +29,11 @@ public class LivroService {
         return livroRepository.findAll();
     }
 
-    public Livro updateLivro(Livro livro){
+    public Livro updateLivro(Livro livro) {
         return livroRepository.save(livro);
     }
 
-    public void deleteLivro(Long id){}
-
+    public void deleteLivro(Long id) {
+        livroRepository.deleteById(id);
+    }
 }

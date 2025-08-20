@@ -1,11 +1,7 @@
 package br.com.fiap.spring_mvc.entity;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -14,44 +10,28 @@ import java.time.LocalDate;
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-    @NotBlank(message = "O titulo é obrigatório")
+    private Long id;
+    @NotBlank(message = "O título é obrigatório")
     private String titulo;
     @NotBlank(message = "O autor é obrigatório")
     private String autor;
     @Enumerated(EnumType.STRING)
-    @NotNull(message = "A categoria é obrigatório")
+    @NotNull(message = "A categoria é obrigatória")
     private Categoria categoria;
     private String editora;
     @DecimalMin(value = "0.99", message = "O preço deve ser no mínimo 0.99")
     private BigDecimal preco;
-    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$")
+    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$",
+            message = "ISBN fora do padrão")
     private String isbn;
-
-    public LocalDate getDataPublicacao() {
-        return dataPublicacao;
-    }
-
-    public void setDataPublicacao(LocalDate dataPublicacao) {
-        this.dataPublicacao = dataPublicacao;
-    }
-
     private LocalDate dataPublicacao;
 
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
     public Long getId() {
-        return Id;
+        return id;
     }
 
-    public void setId(Long Id) {
-        this.Id = Id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitulo() {
@@ -60,6 +40,14 @@ public class Livro {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public Categoria getCategoria() {
@@ -92,5 +80,13 @@ public class Livro {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public LocalDate getDataPublicacao() {
+        return dataPublicacao;
+    }
+
+    public void setDataPublicacao(LocalDate dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 }
