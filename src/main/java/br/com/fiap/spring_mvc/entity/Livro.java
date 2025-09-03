@@ -19,14 +19,13 @@ public class Livro {
     @NotNull(message = "A categoria é obrigatória")
     private Categoria categoria;
     private String editora;
-    @DecimalMin(value = "0.99", message = "O preço deve ser no mínimo 0.99")
+    @DecimalMin(value = "0,99", message = "O preço deve ser no mínimo 0,99")
     private BigDecimal preco;
-    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$",
-            message = "ISBN fora do padrão")
+    @Pattern(regexp = "^970$\\d(7)$|^970\\d{10}$", message = "ISBN fora do padrão")
     private String isbn;
     private LocalDate dataPublicacao;
 
-    public Long getId() {
+    public Long getId(){
         return id;
     }
 
@@ -58,14 +57,6 @@ public class Livro {
         this.categoria = categoria;
     }
 
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
-
     public BigDecimal getPreco() {
         return preco;
     }
@@ -90,3 +81,4 @@ public class Livro {
         this.dataPublicacao = dataPublicacao;
     }
 }
+
