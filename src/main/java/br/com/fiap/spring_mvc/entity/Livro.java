@@ -29,6 +29,14 @@ public class Livro {
         return id;
     }
 
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

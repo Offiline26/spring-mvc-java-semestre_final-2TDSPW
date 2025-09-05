@@ -5,64 +5,46 @@
     <title>Estante de Livros</title>
 </head>
 <body>
-    <div th:include="~{fragments/header :: cabecalho}"></div>
-    <div>
-        <h2>Lista de Livros</h2>
-<<<<<<< HEAD
-=======
-        <br>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID do Livro</th>
-                    <th>Título </th>
-                    <th>Ações </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="livro: ${listaLivros}">
-                    <td th:text="${livro.id}"> </td>
-                    <td th:text="${livro.titulo}"> </td>
-                    <td>
-                        <button th:attr="onclick=|showModal('infoModal' + ${livro.id})|">
-                            Ver
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div th:each="livro: ${listaLivros}"
-             th:attr="id=${'infoModal' + livro.id}"
-             style="display: none">
-            <p>
-                ID: <span th:text="${livro.id}"></span><br/>
-                Título: <span th:text="${livro.titulo}"></span><br/>
-                Autor: <span th:text="${livro.autor}"></span><br/>
-                Categoria: <span th:text="${livro.categoria.descricao}"></span><br/>
-                Editora: <span th:text="${livro.editora}"></span><br/>
-                Preço: <span th:text="${livro.preco}"></span><br/>
-                ISBN: <span th:text="${livro.isbn}"></span><br/>
-                Data de Publicação: <span th:text="${#temporals.format(livro.dataPublicacao, 'dd/MM/yyyy')}"></span><br/>
->>>>>>> 5f083db (Aula 02/09)
+<div th:include="~{fragments/header :: cabecalho}"></div>
 
-    <br/>
+<div>
+    <h2>Lista de Livros</h2>
+    <br>
     <table>
         <thead>
-            <tr>
-                <th>ID </th>
-                <th>Título </th>
-                <th>Ações </th>
-            </tr>
+        <tr>
+            <th>ID do Livro</th>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ações</th>
+        </tr>
         </thead>
         <tbody>
-            <tr th:each="livro: ${listaLivros}">
-                <td th:text="${livro.id}"></td>
-                <td th:text="${livro.titulo}"></td>
-                <td>Ver Detalhes</td>
-            </tr>
+        <tr th:each="livro : ${listaLivros}">
+            <td th:text="${livro.id}"></td>
+            <td th:text="${livro.titulo}"></td>
+            <td th:text="${livro.autor}"></td>
+            <td>
+                <button th:attr="onclick=|showModal('infoModal' + ${livro.id})|">Ver</button>
+            </td>
+        </tr>
         </tbody>
     </table>
+
+    <div th:each="livro : ${listaLivros}" th:attr="id=${'infoModal' + livro.id}" style="display: none">
+        <p>
+            ID: <span th:text="${livro.id}"></span><br/>
+            Título: <span th:text="${livro.titulo}"></span><br/>
+            Autor: <span th:text="${livro.autor}"></span><br/>
+            Categoria: <span th:text="${livro.categoria.descricao}"></span><br/>
+            Editora: <span th:text="${livro.editora}"></span><br/>
+            Preço: <span th:text="${livro.preco}"></span><br/>
+            ISBN: <span th:text="${livro.isbn}"></span><br/>
+            Data de Publicação: <span th:text="${#temporals.format(livro.dataPublicacao, 'dd/MM/yyyy')}"></span><br/>
+        </p>
     </div>
-    <div th:include="~{fragments/footer :: rodape}"></div>
+</div>
+
+<div th:include="~{fragments/footer :: rodape}"></div>
 </body>
 </html>
